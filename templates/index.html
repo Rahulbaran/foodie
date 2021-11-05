@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rahul Kumar">
+    <meta name="contact" content="rahulkumar109422@gmail.com">
+
+
+    <title>{{title}} | foodie</title>
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Concert+One&family=Lato&display=swap" rel="stylesheet">
+
+
+    <!-- Custom stylesheets -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+
+    {{ moment.include_moment() }}
+
+</head>
+<body>
+
+    <div class="response__msg__container">
+        <span class="response__msg">You are on the right place</span>
+        <button class="msg__hide__btn">X</button>
+    </div>
+
+    <header class="foodie--header">
+        <h1 class="app__header">Recipe</h1>
+
+        <form class="form" autocomplete="off" method="post
+        ">
+            {{form.hidden_tag()}}
+
+            <div class="form__group">
+                {{form.recipeName(placeholder="recipe name", class="recipe__field")}}
+            </div>
+
+            <div class="submit__btn__group">
+                {{form.submit(class="btn submit__btn")}}
+            </div>
+        </form>
+    </header>
+
+    <!-- Searched recipes container -->
+    <main class="recipe__cards__container">
+
+        <!-- <div class="recipe__card">
+            <div class="recipe__header">
+                <img src="https://spoonacular.com/recipeImages/691887-312x231.jpg" alt="Recipe name" class="recipe__image">
+            </div>
+
+            <div class="recipe__body">
+                <h4 class="recipe__name">Chicken Tikka</h4>
+                <button class="recipe__ingredients__btn btn">Ingredients</button>
+                <div class="recipe__ingredients__container">
+                    <p class="ingredient__name">Ginger</p>
+                </div>
+            </div>
+        </div> -->
+
+    </main>
+
+
+    <!--  Custom JS -->
+    <script src="{{url_for('static',filename='minjs/script.js')}}"></script>
+</body>
+</html>
