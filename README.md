@@ -1,2 +1,2 @@
 # foodie
-A recipe searching app 
+**foodie** is a recipe searching application created using flask and javascript.
