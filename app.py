@@ -16,7 +16,6 @@ moment = Moment(app)
 
 
 
-
 @app.route('/')
 @app.route('/home')
 def home():
