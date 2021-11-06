@@ -1,4 +1,4 @@
-# foodie 🥮🎂🍗
+# [foodie](https://flask-foodie-app.herokuapp.com/) 🥮🎂🍗
 * It is a recipe searching application coded👨‍💻 using flask and javascript.
 * The application will show top 15 recipes (if available). 
 * One can also check recipe ingredients using the `ingredients` button.
@@ -40,3 +40,4 @@ $ virtual/scripts/activate.bat
 (virtual) $ flask run
 ```
 
+#### [website link](https://flask-foodie-app.herokuapp.com/)
