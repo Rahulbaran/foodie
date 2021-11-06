@@ -44,3 +44,8 @@ def getIngredients():
     parameters = {'apiKey' : os.environ.get('FOOD_API_KEY')}
     ingredients = requestRecipeItem(url, parameters)
     return ingredients
+
+
+
+if __name__=="__main__":
+    app.run(debug=False)
