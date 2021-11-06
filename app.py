@@ -1,17 +1,17 @@
 import os
-import requests as req
-from requests import exceptions
-from requests.exceptions import HTTPError, ConnectionError
 from flask import Flask, render_template, request
 from flask_moment import Moment
 from form import SearchRecipeForm
+from utils import requestRecipeItem
+
 
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(16).hex()
-
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 moment = Moment(app)
+
+
 
 
 
@@ -26,22 +26,21 @@ def home():
 
 
 
-def requestRecipe(name):
-    url = 'https://api.spoonacular.com/recipes/complexSearch'
-    try:
-        res = req.get(url, params={'apiKey' : os.environ.get('FOOD_API_KEY'), 'query' : name, 'number' : 15})
-        res.raise_for_status()
-    except HTTPError:
-        return {'code' : 404, 'message' : 'Did not get anything'}
-    except ConnectionError : 
-        return {'code' : 500, 'message' : 'Something went wrong'}
-    except exceptions:
-        return {'code' : 500, 'message' : 'Something went wrong'}
-    else : 
-        return res.json()
-
 @app.route('/getRecipe', methods=["POST"])
 def getRecipe():
     recipeName = request.get_json()
-    data = requestRecipe(recipeName.get('recipe'))
+    url = 'https://api.spoonacular.com/recipes/complexSearch'
+    parameters = {'apiKey' : os.environ.get('FOOD_API_KEY'), 'query' : recipeName.get('recipe'), 'number' : 15}
+    data = requestRecipeItem(url, parameters)
     return data
+
+
+
+
+@app.route('/getIngredients', methods=["POST"])
+def getIngredients():
+    recipeId = request.get_json()
+    url = f'https://api.spoonacular.com/recipes/{recipeId.get("id")}/ingredientWidget.json'
+    parameters = {'apiKey' : os.environ.get('FOOD_API_KEY')}
+    ingredients = requestRecipeItem(url, parameters)
+    return ingredients

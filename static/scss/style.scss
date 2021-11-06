@@ -85,7 +85,7 @@ body {
 //result is not received------------------ 
 .response__msg {
     &__container {
-        position:absolute;
+        position:fixed;
         top:0;
         left:0;
         width:100%;
@@ -137,7 +137,7 @@ body {
 
 .form {
     background-color:var(--form-bg);
-    padding:2rem;
+    padding:2rem 1.5rem;
     border-radius:5px;
     box-shadow:0 0 2px var(--shadow-color);
     display:flex;
@@ -186,6 +186,7 @@ body {
     }
     &__header {
         img {
+            width:100%;
             display:block;
             border-radius:8px 8px 0 0;
         }
